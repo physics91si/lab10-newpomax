@@ -15,12 +15,18 @@ def main():
 
 
 def find_roots(a,b,c):
-    mid = b^2 - 4*a*c
-    sqrt_mid = mid^(1/2)
-    x1 = (-b + sqrt_mid)/2*a
-    x2 = (-b - sqrt_mid)/2*a
-    return x1, x2
-
+    try:
+        mid = b**2 - 4*a*c
+        sqrt_mid = mid**(.5)
+        x1 = (-b + sqrt_mid)/(2*a)
+        x2 = (-b - sqrt_mid)/(2*a)
+        return x1, x2
+    except ZeroDivisionError:
+        print("ERROR: The first parameter, a, cannot be equal to 0")
+    except ValueError:
+        print("ERROR: The discriminant (b^2 - 4ac) must be non-negative for real roots")
+    except TypeError:
+        print("ERROR: The parameters must be numbers- no other type is allowed") 
 
 if __name__=="__main__":
         main()
